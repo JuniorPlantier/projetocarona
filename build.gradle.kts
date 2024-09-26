@@ -20,6 +20,16 @@ repositories {
 }
 
 dependencies {
+
+	/*
+	as configuraçãoes de dependências como implementation servem para controlar como as
+	dependências são incluídas no projeto e em quais contextos elas estão disponíveis.
+
+	* implementation(dependências que serão usadas tanto em tempo de compilação quanto em tempo de execução)
+	* developmentOnly(usada para incluir dependências que só são necessárias durante o desenvolvimento
+	*                 e não serão incluídas no ambiente de produção ou no artefato final gerado (como um JAR ou WAR).)
+	* */
+
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
