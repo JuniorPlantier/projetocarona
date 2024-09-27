@@ -1,10 +1,12 @@
 package com.plantier.projetocarona.domain
 
+import com.plantier.projetocarona.commons.TravelRequestStatus
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
 import jakarta.persistence.ManyToOne
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 @Entity
 data class Driver (
@@ -33,5 +35,7 @@ data class TravelRequest(
     @ManyToOne
     val passenger: Passenger,
     val origin: String,
-    val destination: String
+    val destination: String,
+    val status: TravelRequestStatus = TravelRequestStatus.CREATED,
+    val creationDate: LocalDateTime = LocalDateTime.now()
 )
