@@ -2,12 +2,12 @@ package com.plantier.projetocarona.interfaces
 
 import com.plantier.projetocarona.domain.Driver
 import com.plantier.projetocarona.domain.DriverRepository
-import com.plantier.projetocarona.domain.PatchDriver
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Service
 import org.springframework.web.bind.annotation.*
 import org.springframework.web.server.ResponseStatusException
+import java.time.LocalDate
 
 @Service
 @RestController
@@ -52,3 +52,8 @@ class DriverAPI(
     fun deleteDriver(@PathVariable("id") id: Long) =
         driverRepository.delete(findDriver(id))
 }
+
+data class PatchDriver(
+    val name: String?,
+    val birthDate: LocalDate?
+)
