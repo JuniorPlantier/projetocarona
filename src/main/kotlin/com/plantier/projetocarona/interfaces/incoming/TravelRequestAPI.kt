@@ -1,18 +1,12 @@
-package com.plantier.projetocarona.interfaces
+package com.plantier.projetocarona.interfaces.incoming
 
-import com.plantier.projetocarona.commons.TravelRequestStatus
-import com.plantier.projetocarona.domain.Passenger
-import com.plantier.projetocarona.domain.TravelRequest
+import com.plantier.projetocarona.domain.TravelRequestStatus
 import com.plantier.projetocarona.domain.TravelService
-import com.plantier.projetocarona.mapping.TravelRequestMapper
+import com.plantier.projetocarona.interfaces.incoming.mapping.TravelRequestMapper
 import org.springframework.hateoas.EntityModel
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
 import org.springframework.http.MediaType
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 import java.time.LocalDateTime
 
 @Service
@@ -29,6 +23,13 @@ class TravelRequestAPI(
         val travelRequest = travelService.saveTravelRequest(mapper.map(travelRequestInput))
         val output = mapper.map(travelRequest)
         return mapper.buildOutputModel(travelRequest, output)
+    }
+
+    @GetMapping("/nearby")
+    fun listNearbyRequests(@RequestParam currentAddress: String):
+            List<EntityModel<TravelRequestOutput>> {
+        val requests = travelService.listNearbyTravelRequests(currentAddress)
+        return mapper.buildOutputModel(requests)
     }
 }
 

@@ -1,4 +1,4 @@
-package com.plantier.projetocarona.interfaces
+package com.plantier.projetocarona.interfaces.incoming
 
 import com.plantier.projetocarona.domain.Driver
 import com.plantier.projetocarona.domain.DriverRepository

@@ -1,6 +1,5 @@
 package com.plantier.projetocarona.domain
 
-import com.plantier.projetocarona.commons.TravelRequestStatus
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
@@ -10,7 +9,6 @@ import java.time.LocalDateTime
 
 @Entity
 data class Driver (
-
     @Id
     @GeneratedValue
     var id: Long? = null,
@@ -39,3 +37,9 @@ data class TravelRequest(
     val status: TravelRequestStatus = TravelRequestStatus.CREATED,
     val creationDate: LocalDateTime = LocalDateTime.now()
 )
+
+enum class TravelRequestStatus {
+    CREATED,
+    ACCEPTED,
+    REFUSED
+}

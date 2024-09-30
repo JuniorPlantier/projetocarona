@@ -1,4 +1,4 @@
-package com.plantier.projetocarona.interfaces
+package com.plantier.projetocarona.interfaces.incoming
 
 import com.plantier.projetocarona.domain.Passenger
 import com.plantier.projetocarona.domain.PassengerRepository
@@ -40,8 +40,8 @@ class PassengerAPI(
 
     @PatchMapping("/{id}")
     fun incrementalUpdatePassenger(
-            @RequestBody passenger: PatchPassenger,
-            @PathVariable("id") id: Long) : Passenger {
+        @RequestBody passenger: PatchPassenger,
+        @PathVariable("id") id: Long) : Passenger {
         val foundPassenger = findPassenger(id)
         val newPassenger = findPassenger(id).copy(
             name = passenger.name ?: foundPassenger.name

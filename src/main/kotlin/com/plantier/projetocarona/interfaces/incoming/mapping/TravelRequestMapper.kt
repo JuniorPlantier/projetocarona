@@ -1,10 +1,10 @@
-package com.plantier.projetocarona.mapping
+package com.plantier.projetocarona.interfaces.incoming.mapping
 
 import com.plantier.projetocarona.domain.PassengerRepository
 import com.plantier.projetocarona.domain.TravelRequest
-import com.plantier.projetocarona.interfaces.PassengerAPI
-import com.plantier.projetocarona.interfaces.TravelRequestInput
-import com.plantier.projetocarona.interfaces.TravelRequestOutput
+import com.plantier.projetocarona.interfaces.incoming.PassengerAPI
+import com.plantier.projetocarona.interfaces.incoming.TravelRequestInput
+import com.plantier.projetocarona.interfaces.incoming.TravelRequestOutput
 import org.springframework.hateoas.EntityModel
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder
 import org.springframework.http.HttpStatus
@@ -50,4 +50,7 @@ class TravelRequestMapper(
 
         return EntityModel.of(output, passengerLink)
     }
+
+    fun buildOutputModel(requests: List<TravelRequest>) =
+        requests.map { buildOutputModel(it, map(it)) }
 }
